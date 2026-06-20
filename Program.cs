@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using _2526_2221050691_BaiThi.Models;
+using _2526_2221050691_BaiThi.Models.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TenSinhVienDbContext>(options =>
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 var app = builder.Build();
 
